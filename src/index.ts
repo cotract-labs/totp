@@ -1,3 +1,3 @@
-const noop = () => {};
+import totp from './totp';
 
-export default noop;
+export default totp;
