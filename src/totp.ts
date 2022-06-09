@@ -1,6 +1,12 @@
 import totp from "totp-generator";
 import isBase32 from "./is-base32";
 
+export const generateTOTP = (key: string, options ?: TOTPOptions, timestamp: Date = new Date()) =>
+    new TOTP(key, options).generate(timestamp);
+
+export const validateTOTP = (key: string, code: string, options ?: TOTPOptions, timestamp: Date = new Date()) =>
+    new TOTP(key, options).validate(code, timestamp);
+
 export interface TOTPOptions {
     period?: number;
     maxSteps?: number;

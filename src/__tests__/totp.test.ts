@@ -1,7 +1,28 @@
-import TOTP from '../totp';
+import TOTP, { generateTOTP, validateTOTP } from '../totp';
 
 // Thu Jun 09 2022 17:34:09 GMT+0200 (Central European Summer Time)
 const date = new Date(1654788849882);
+
+describe('generateTOTP', () => {
+    test('works as an alias for TOTP generate function', () => {
+        const key = 'AAAAAAAA';
+        const totp = new TOTP(key);
+        const code = totp.generate();
+
+        expect(generateTOTP(key)).toBe(code);
+    });
+});
+
+describe('generateTOTP', () => {
+    test('works as an alias for TOTP generate function', () => {
+        const key = 'AAAAAAAA';
+        const totp = new TOTP(key);
+        const code = totp.generate();
+        const isValid = totp.validate(code);
+
+        expect(validateTOTP(key, code)).toBe(isValid);
+    });
+});
 
 describe('generate', () => {
     test('generates valid code', () => {

@@ -21,6 +21,19 @@ totp.validate(code);
 // true
 ```
 
+You can also use the function equvialents if you don't want to use a class.
+
+```ts
+import { generateTOTP, validateTOTP } from '../totp';
+
+const key = 'AAAAAAAA';
+const code = generateTOTP(key);
+// 59631047
+
+validateTOTP(key, code);
+// true
+```
+
 With all options and their default values
 
 ```ts
